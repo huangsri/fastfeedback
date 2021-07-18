@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { createCtx } from '../utils/createContext'
+import { createUser } from './db'
 import firebase from './firebase'
 
 type AuthContext = {
@@ -18,7 +19,12 @@ export const AuthProvider = ({ children }: WithChildren): JSX.Element => {
     return firebase
       .auth()
       .signInWithPopup(new firebase.auth.GithubAuthProvider())
-      .then((response) => setUser(response.user))
+      .then((response) => {
+        if (response.user) {
+          createUser(response.user.uid, response.user)
+          setUser(response.user)
+        }
+      })
   }
 
   const signOut = () => {
