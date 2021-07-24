@@ -7,6 +7,19 @@ const theme = extendTheme({
   fontWeights: {
     medium: 600,
   },
+  styles: {
+    global: {
+      '#__next': {
+        d: 'flex',
+        flexDir: 'column',
+        minH: '100vh',
+      },
+      html: {
+        minWidth: '360px',
+        scrollBehavior: 'smooth',
+      },
+    },
+  },
 })
 
 export default theme

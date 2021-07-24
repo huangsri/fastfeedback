@@ -1,6 +1,6 @@
-import Head from 'next/head'
+import { Button, Heading } from '@chakra-ui/react'
 
-import { useAuthContext } from '../lib/auth'
+import { useAuthContext } from '@/lib/auth'
 
 export default function Home(): JSX.Element {
   const auth = useAuthContext()
@@ -8,24 +8,24 @@ export default function Home(): JSX.Element {
   return (
     <div>
       <main>
-        <h1>Fast Feedback</h1>
+        <Heading>Fast Feedback</Heading>
 
         {auth.user ? (
-          <button
+          <Button
             onClick={() => {
               auth.signOut()
             }}
           >
             Sign Out
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             onClick={() => {
               auth.signInWithGithub()
             }}
           >
             Sign In
-          </button>
+          </Button>
         )}
 
         <div>{auth.user?.email}</div>
