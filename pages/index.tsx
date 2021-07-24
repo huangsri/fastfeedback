@@ -1,19 +1,15 @@
 import Head from 'next/head'
 
 import { useAuthContext } from '../lib/auth'
-import styles from '../styles/Home.module.css'
 
 export default function Home(): JSX.Element {
   const auth = useAuthContext()
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div>
+      <main>
+        <h1>Fast Feedback</h1>
 
-      <main className={styles.main}>
         {auth.user ? (
           <button
             onClick={() => {
