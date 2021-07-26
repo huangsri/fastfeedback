@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { VscCompareChanges } from 'react-icons/vsc'
 import { useAuthContext } from '@/lib/auth'
+import { AddSiteModal } from './AddSiteModal'
 
 type Props = {
   children: ReactNode
@@ -60,7 +61,16 @@ export const DashboardShell = (props: Props): JSX.Element => {
             </BreadcrumbItem>
           </Breadcrumb>
 
-          <Heading sx={{ mb: '4' }}>Sites</Heading>
+          <Flex
+            sx={{
+              mb: '4',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Heading>Sites</Heading>
+            <AddSiteModal>Add Site</AddSiteModal>
+          </Flex>
 
           {children}
         </Flex>

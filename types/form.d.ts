@@ -1,4 +1,4 @@
 type SiteForm = {
-  site: string
+  name: string
   url: string
 }
