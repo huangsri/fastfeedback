@@ -1,4 +1,4 @@
-import { Button, Heading } from '@chakra-ui/react'
+import { Button, Flex, Heading } from '@chakra-ui/react'
 
 import { useAuthContext } from '@/lib/auth'
 
@@ -6,30 +6,34 @@ export default function Home(): JSX.Element {
   const auth = useAuthContext()
 
   return (
-    <div>
-      <main>
-        <Heading>Fast Feedback</Heading>
+    <Flex
+      as="main"
+      sx={{
+        flexDir: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        h: '100vh',
+      }}
+    >
+      <Heading>Fast Feedback</Heading>
 
-        {auth.user ? (
-          <Button
-            onClick={() => {
-              auth.signOut()
-            }}
-          >
-            Sign Out
-          </Button>
-        ) : (
-          <Button
-            onClick={() => {
-              auth.signInWithGithub()
-            }}
-          >
-            Sign In
-          </Button>
-        )}
-
-        <div>{auth.user?.email}</div>
-      </main>
-    </div>
+      {auth.user ? (
+        <Button
+          onClick={() => {
+            auth.signOut()
+          }}
+        >
+          Sign Out
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            auth.signInWithGithub()
+          }}
+        >
+          Sign In
+        </Button>
+      )}
+    </Flex>
   )
 }

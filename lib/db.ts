@@ -19,3 +19,11 @@ export function createUser(
     },
   )
 }
+
+export function createSite(
+  data: SiteForm,
+): Promise<
+  firebase.firestore.DocumentReference<firebase.firestore.DocumentData>
+> {
+  return firestore.collection('sites').add(data)
+}
