@@ -27,3 +27,11 @@ export function createSite(
 > {
   return firestore.collection('sites').add(data)
 }
+
+export function createFeedback(
+  data: any,
+): Promise<
+  firebase.firestore.DocumentReference<firebase.firestore.DocumentData>
+> {
+  return firestore.collection('feedback').add(data)
+}

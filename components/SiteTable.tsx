@@ -1,5 +1,6 @@
 import { Link, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
+import NextLink from 'next/link'
 
 type Props = {
   sites: Site[]
@@ -24,7 +25,9 @@ export const SiteTable = ({ sites }: Props): JSX.Element => {
               <Td>{s.name}</Td>
               <Td>{s.url}</Td>
               <Td>
-                <Link>View Feedback</Link>
+                <NextLink href="/p/[siteId]" as={`/p/${s.id}`} passHref>
+                  <Link>View Feedback</Link>
+                </NextLink>
               </Td>
               <Td>{format(parseISO(s.createdAt), 'PPpp')}</Td>
               <Td></Td>
